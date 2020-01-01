@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% if title %}
-    <title>Moringa Tribune - {{title}}</title>
+    <title>Instargram - {{title}}</title>
     {% else %}
-      <title> Moringa Tribune </title>
+      <title> Instargram </title>
     {% endif %}
   
     {% block styles %}
@@ -16,8 +16,8 @@
     {% endblock %}
 </head>
 <body>
-        {% include "navbar.html" %}
-
+        {% include "all-photos/navbar.html" %}
+        {% block content %} <h1 class='text-center'>WELCOME TO INSTARGRAM </h1> {%endblock%}
         
         {% block scripts %}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
