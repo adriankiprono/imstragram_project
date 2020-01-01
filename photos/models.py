@@ -11,6 +11,7 @@ class Profile(models.Model):
 class Image(models.Model):
     image_name= models.CharField(max_length=60)
     profile =models.ForeignKey('Profile',on_delete=models.CASCADE,)
+    image= models.ImageField(upload_to= 'images/',default='image')
     def __str__(self):
         return self.image_name
 
