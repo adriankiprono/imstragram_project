@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Profile(models.Model):
-    username = models.TextField(max_length=40)
-    bio = models.CharField(max_length= 100)
+    username = models.CharField(max_length=40)
+    bio = models.TextField(max_length= 100)
     def __str__(self):
         return self.username
 
