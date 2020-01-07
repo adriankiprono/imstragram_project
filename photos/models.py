@@ -24,4 +24,3 @@ class Image(models.Model):
         image = cls.objects.filter(name__icontains=search_term)
         return image
 
-

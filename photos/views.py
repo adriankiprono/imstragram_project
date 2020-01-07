@@ -7,6 +7,7 @@ from .forms import NewImageForm
 
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def home(request):
     images = Image.objects.all()
     
@@ -58,7 +59,31 @@ def new_image(request):
         form = NewImageForm()
     return render(request, 'new_image.html', {"form": form})
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
-    current_user= request.user
-    profile=Profile.object
+    current_user = request.user
+    profile = Profile.objects.get(user=request.user)
+    images = Image.objects.filter(uploader_profile_id = current_user.id)
+    post =images.count()
+    return render(request,'profile.html',{"images":images, "post":post,'profile':profile})
+
+@login_required(login_url='/accounts/login/')
+def update_profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUser(request.POST,instance=request.user)
+        profile_form = UpdateProfile(request.POST,request.FILES,instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request,'Your Profile account has been updated successfully')
+        return redirect('my_profile')
+    else:
+        user_form = UpdateUser(instance=request.user)
+        profile_form = UpdateProfile(instance=request.user.profile)
+        forms = {
+        'user_form':user_form,
+        'profile_form':profile_form
+        }
+    return render(request,'update_profile.html',forms)
+
 
