@@ -7,13 +7,13 @@ from .forms import NewImageForm
 
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='accounts/login/')
 def home(request):
     images = Image.objects.all()
     
     return render(request,'home.html',{"images":images})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='accounts/login/')
 def image(request,image_id):
     try:
         image = Image.objects.get(id = image_id)
@@ -44,7 +44,7 @@ def reg_view(request):
         form=UserCreationForm()
     return render(request, 'registration/register.html',{"form":form})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='accounts/login/')
 def new_image(request):
     current_user = request.user
     if request.method == 'POST':
@@ -59,7 +59,7 @@ def new_image(request):
         form = NewImageForm()
     return render(request, 'new_image.html', {"form": form})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='accounts/login/')
 def profile(request):
     current_user = request.user
     profile = Profile.objects.all()
@@ -67,7 +67,7 @@ def profile(request):
     
     return render(request,'profile.html',{"profile_pic":profile_pic,'profile':profile})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='accounts/login/')
 def update_profile(request):
     if request.method == 'POST':
         user_form = UpdateUser(request.POST,instance=request.user)
