@@ -15,8 +15,6 @@ urlpatterns=[
     url(r'^new/image$', views.new_image, name='new-image'),
     url(r'^profile$', views.profile, name='my_profile'),
     
-    
-
 
     
 ]
