@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import NewImageForm
+
 
 
 # Create your views here.
@@ -56,4 +57,8 @@ def new_image(request):
     else:
         form = NewImageForm()
     return render(request, 'new_image.html', {"form": form})
+
+def profile(request):
+    current_user= request.user
+    profile=Profile.object
 

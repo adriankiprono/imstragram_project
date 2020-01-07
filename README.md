@@ -1,5 +1,5 @@
 # INSTAGRAM
-This is a website that enables one to view various images that interests them and  can view the details of the photo by clicking on it.
+This is a social media website that enables one to post images and videos and also can see othe's images and videos and comment and like them.
 
 ### Author
 
@@ -14,7 +14,7 @@ This is a website that enables one to view various images that interests them an
 
 To view the application go to [click here]( https://adrianogallery.herokuapp.com/ )
 
-- Step 1: Clone this repo :git clone (https://github.com/adriankiprono/Gallery-project.git)
+- Step 1: Clone this repo :git clone (https://github.com/adriankiprono/instragram_project.git)
 
 - step 2: Open the repo using your text editor e.g atom or vscode
 

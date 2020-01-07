@@ -3,7 +3,5 @@ from django import forms
 class NewImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['profile']
-        widgets = {
-            'profile': forms.CheckboxSelectMultiple(),
-        }
+        fields = ['name','profile','image']
+                

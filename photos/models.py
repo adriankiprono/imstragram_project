@@ -7,6 +7,7 @@ from tinymce.models import HTMLField
 class Profile(models.Model):
     username = models.CharField(max_length=40)
     bio = models.TextField(max_length= 100)
+    profile_pic= models.ImageField(upload_to= 'avatar/',default='image2')
     def __str__(self):
         return self.username
     
