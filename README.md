@@ -14,7 +14,7 @@ This is a social media website that enables one to post images and videos and al
 
 To view the application go to [click here]( https://adrianogallery.herokuapp.com/ )
 
-- Step 1: Clone this repo :git clone (https://github.com/adriankiprono/instragram_project.git)
+- Step 1: Clone this repo :git clone (https://adrianoinstragram.herokuapp.com/)
 
 - step 2: Open the repo using your text editor e.g atom or vscode
 
