@@ -14,14 +14,14 @@ def image(request,image_id):
         raise Http404()
     return render(request,"all-photos/image.html", {"image":image})
 
-def search_user(request):
+def search_results(request):
     
     if 'image' in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
-        searched_name = Image.search_by_title(search_term)
+        searched_images = Image.search_by_name(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-photos/search.html',{"message":message,"name": searched_name})
+        return render(request, 'all-photos/search.html',{"message":message,"images": searched_images})
 
     else:
         message = "You haven't searched for any term"
