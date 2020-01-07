@@ -1,12 +1,16 @@
 from django.shortcuts import render
 from .models import *
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def home(request):
     images = Image.objects.all()
     
     return render(request,'home.html',{"images":images})
-
+    
+@login_required(login_url='/accounts/login/')
 def image(request,image_id):
     try:
         image = Image.objects.get(id = image_id)
@@ -35,5 +39,5 @@ def reg_view(request):
             return redirect('login_url')
     else:
         form=UserCreationForm()
-    return render(request, 'registration/registration_form.html',{"form":form})
+    return render(request, 'registration/register.html',{"form":form})
 
