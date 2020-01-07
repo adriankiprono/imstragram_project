@@ -35,7 +35,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # else:
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+        default=config('DATABASE_URI')
     )
 }
 
@@ -112,15 +112,7 @@ WSGI_APPLICATION = 'instargram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'images',
-#         'USER': 'adriantuimur',
-#     'PASSWORD':'qweasdzxc',
-        
-#     }
-# }
+
 
 
 # Password validation
@@ -162,6 +154,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL='/'
+# Extra places for collectstatic to find static files.
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
