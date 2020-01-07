@@ -27,3 +27,13 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"message":message})
 
+def reg_view(request):
+    if request.method == 'POST':
+        form =UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login_url')
+    else:
+        form=UserCreationForm()
+    return render(request, 'registration/registration_form.html',{"form":form})
+

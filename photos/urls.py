@@ -8,6 +8,11 @@ urlpatterns=[
     url(r'^$',views.home,name = 'home'),
     url(r'^image/(\d+)',views.image,name ='image'),
     url(r'^search/', views.search_results, name='search_results')
+    url(r'^accounts/register/',views.reg_view,name ='reg_view'),
+    url(r'^accounts/login/',LoginView.as_view(),name="login_url"),
+    url(r'^logout/',LogoutView.as_view(next_page='home'),name="logout_url"),
+    
+
 
     
 ]
