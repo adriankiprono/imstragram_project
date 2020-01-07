@@ -1,29 +1,40 @@
-{% load bootstrap4 %}
-{% load static%}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% if title %}
-    <title>Instargram - {{title}}</title>
-    {% else %}
-      <title> Instargram </title>
-    {% endif %}
-  
-    {% block styles %}
-      {% bootstrap_css %}
-      <link rel="stylesheet" href="{% static 'css/base-photos.css' %}">
-    {% endblock %}
-</head>
-<body>
-        {% include "all-photos/navbar.html" %}
-        {% block content %} <h1> WELCOME TO INSTARGRAM </h1> {%endblock%}
-        
-        {% block scripts %}
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-         {% bootstrap_javascript %}
-        {% endblock %}
-    
-</body>
-</html>
+{%extends 'all-photos/base.html'%}
+
+{% block content%}
+
+<div class="jumbotron-fluid">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{user.profile.profile_pic.url}}" >
+        <div class="media-body">
+            <h2 class="account-heading"> {{user.username}}</h2>
+        </div>
+    </div>
+    <div class="container">
+        <h3>{{profile.bio}}</h3>
+    </div>
+   
+        <div class="container-fluid">
+                {% for image in images %}
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <img src="{{image.image.url}}" class="img-responsive" alt="Image">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        
+                        <h2 class="text-center">{{image.name}}</h2>
+                    </div>
+            
+                </div>
+                {% empty %}
+                <div class="row">
+                    <h2 class="text-center">There No IMAGE Items</h2>
+                </div>
+                        {% endfor %}
+            
+            
+            </div>
+
+
+
+</div>
+{% endblock content %}

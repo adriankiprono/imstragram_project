@@ -62,10 +62,10 @@ def new_image(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
-    profile = Profile.objects.get(user=request.user)
-    images = Image.objects.filter(uploader_profile_id = current_user.id)
-    post =images.count()
-    return render(request,'profile.html',{"images":images, "post":post,'profile':profile})
+    profile = Profile.objects.all()
+    profile_pic = Profile.objects.all()
+    
+    return render(request,'profile.html',{"profile_pic":profile_pic,'profile':profile})
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request):
