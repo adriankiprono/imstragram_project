@@ -12,6 +12,7 @@ urlpatterns=[
     url(r'^accounts/register/',views.reg_view,name ='reg_view'),
     url(r'^accounts/login/',LoginView.as_view(),name="login_url"),
     url(r'^logout/',LogoutView.as_view(next_page='home'),name="logout_url"),
+    url(r'^new/image$', views.new_image, name='new-image'),
     
 
 

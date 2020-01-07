@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from .forms import NewImageForm
 
 
 # Create your views here.
@@ -9,7 +10,7 @@ def home(request):
     images = Image.objects.all()
     
     return render(request,'home.html',{"images":images})
-    
+
 @login_required(login_url='/accounts/login/')
 def image(request,image_id):
     try:
@@ -40,4 +41,19 @@ def reg_view(request):
     else:
         form=UserCreationForm()
     return render(request, 'registration/register.html',{"form":form})
+
+@login_required(login_url='/accounts/login/')
+def new_image(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.editor = current_user
+            image.save()
+        return redirect('home')
+
+    else:
+        form = NewImageForm()
+    return render(request, 'new_image.html', {"form": form})
 
