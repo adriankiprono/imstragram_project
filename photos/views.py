@@ -1,19 +1,18 @@
 from django.shortcuts import render,redirect
 from .models import *
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import NewImageForm
 
 
 
 # Create your views here.
-@login_required(login_url='accounts/login/')
+@login_required(login_url='/accounts/login/')
 def home(request):
     images = Image.objects.all()
     
     return render(request,'home.html',{"images":images})
 
-@login_required(login_url='accounts/login/')
+@login_required(login_url='/accounts/login/')
 def image(request,image_id):
     try:
         image = Image.objects.get(id = image_id)
@@ -34,17 +33,8 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"message":message})
 
-def reg_view(request):
-    if request.method == 'POST':
-        form =UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login_url')
-    else:
-        form=UserCreationForm()
-    return render(request, 'Registration/register.html',{"form":form})
 
-@login_required(login_url='accounts/login/')
+@login_required(login_url='/accounts/login/')
 def new_image(request):
     current_user = request.user
     if request.method == 'POST':
@@ -59,11 +49,12 @@ def new_image(request):
         form = NewImageForm()
     return render(request, 'new_image.html', {"form": form})
 
-@login_required(login_url='accounts/login/')
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profile = Profile.objects.all()
     profile_pic = Profile.objects.all()
     
     return render(request,'profile.html',{"profile_pic":profile_pic,'profile':profile})
+
 
