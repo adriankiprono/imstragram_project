@@ -6,7 +6,7 @@ from .forms import NewImageForm
 
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+
 def home(request):
     images = Image.objects.all()
     
