@@ -1,4 +1,4 @@
-{%extends "Registration/base.html"%}
+{%extends "registration/base.html"%}
 {% load bootstrap4 %}
 {% block content %}
 <div class="container">
@@ -16,7 +16,7 @@
         </div>
         <div class="panel-body">
 
-          <form  action="accounts/login/" method="post">
+          <form  action="/accounts/login/" method="post">
             {% csrf_token %}
             {% bootstrap_form form%}
 
@@ -35,7 +35,7 @@
     </div>
     <!-- empty div -->
     <div class="col-md-4">
-        <button type="submit" class="btn btn-primary btn-sm">sign up here</button>
+        
         <p>Don't have an Account sign up here <a href="{% url 'reg_view' %}">Sign Up</a></p>
     </div>
   </div>
