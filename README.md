@@ -6,7 +6,8 @@ This is a social media website that enables one to post images and videos and al
  Adrian Kiprono 
 
  ### DESCRIPTION
- -
+ - Before login a user needs to sign up.
+ - After that a user a can post image
 
 
  

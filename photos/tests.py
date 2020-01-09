@@ -1,4 +1,5 @@
 from django.test import TestCase
+from . models import *
 
 # Create your tests here.
 class ImageTestClass(TestCase):
@@ -42,6 +43,20 @@ class ProfileTestClass(TestCase):
     
     def setUp(self):
         self.profile_one = Profile(profile_photo='images/mine.jpg',bio='Currently doing datascience in moringa',username="falone")
+
+     def test_instance(self):
+        self.assertTrue(isinstance(self.profile_one,Profile)) 
+
+    def test_save_method(self):
+        
+        self.profile_one.save_profile()
+        profiles = Profile.objects.all()
+        self.assertTrue(len(profiles) > 0)
+
+    def tearDown(self):
+        Profile.objects.all().delete()
+
+
         
        
         
